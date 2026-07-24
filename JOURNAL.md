@@ -11,6 +11,6 @@ The RAG ingestion pipeline chunks documents by splitting on markdown headings. S
 
 **Branch name:** fix/149-structural-chunker-no-headings
 
-**Setup confirmation:** [ ] App runs locally at localhost:5173
+**Setup confirmation:** [x] App runs locally at localhost:5173
 
 **Cohort ledger:** [ ] Issue added to cohort ledger
