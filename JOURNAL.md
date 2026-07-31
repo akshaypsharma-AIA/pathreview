@@ -45,3 +45,14 @@ Ran `pytest tests/unit/test\_structural\_chunker.py -k test\_document\_with\_no\
 
 Confirming semantic\_chunker.py's token-based sub-splitting handles very large headingless documents sensibly.
 
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+Implemented the fix in structural_chunker.py's chunk() -- falls back to SemanticChunker when no headings are found, instead of returning an empty list. Added missing type annotations to both structural_chunker.py and semantic_chunker.py so ruff/black/mypy pass clean on both files. All tests in test_structural_chunker.py (15/15) and test_semantic_chunker.py (16/16) pass, including the previously-failing test_document_with_no_headings.
+
+**Next steps:**
+Open the pull request against ascherj/pathreview, write the PR description (noting pre-existing unrelated test failures), and request review.
+
+**Blockers:**
+make test-unit shows 52 pre-existing failures across ~15 unrelated test files (bias detector, PII scrubber, faithfulness checker, tech detector, skill extractor, etc.) -- none touch the files I changed, and my two test files pass 100%. Documenting these as pre-existing rather than fixing them, per course guidance.
