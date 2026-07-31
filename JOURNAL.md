@@ -23,7 +23,7 @@ The RAG ingestion pipeline chunks documents by splitting on markdown headings. S
 
 
 
-\*\*Reproduction commit link:\*\* \[fill in after pushing]
+**Reproduction commit link:** https://github.com/akshaypsharma-AIA/pathreview/commit/a7452b2
 
 
 
@@ -33,7 +33,7 @@ Ran `pytest tests/unit/test\_structural\_chunker.py -k test\_document\_with\_no\
 
 
 
-\*\*PLAN.md link:\*\* \[fill in after pushing]
+*PLAN.md link:** https://github.com/akshaypsharma-AIA/pathreview/blob/fix/149-structural-chunker-no-headings/PLAN.md
 
 
 
