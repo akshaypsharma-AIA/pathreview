@@ -4,13 +4,44 @@
 
 **Issue title:** Structural chunker silently drops documents that contain no headings
 
-**Tier:** [x] Tier 1  [ ] Tier 2  [ ] Tier 3
+**Tier:** \[x] Tier 1  \[ ] Tier 2  \[ ] Tier 3
 
 **Problem summary:**
 The RAG ingestion pipeline chunks documents by splitting on markdown headings. StructuralChunker's section-extraction logic only starts collecting content once it has already seen a heading, so a document with zero headings never triggers collection and returns no sections at all. Since chunk() has nothing to loop over in that case, it returns an empty list instead of at least one chunk. The pipeline never flags a zero-chunk result as an error, so a real candidate's README that just doesn't use markdown headings would silently contribute nothing to their review. The fix reuses the file's existing SemanticChunker fallback (already used for oversized sections) so headingless documents get chunked too, instead of dropped.
 
 **Branch name:** fix/149-structural-chunker-no-headings
 
-**Setup confirmation:** [x] App runs locally at localhost:5173
+**Setup confirmation:** \[x] App runs locally at localhost:5173
 
-**Cohort ledger:** [ ] Issue added to cohort ledger
+**Cohort ledger:** \[ ] Issue added to cohort ledger
+
+
+
+
+
+\## Week 8 — Reproduction \& solution planning
+
+
+
+\*\*Reproduction commit link:\*\* \[fill in after pushing]
+
+
+
+\*\*Reproduction summary:\*\*
+
+Ran `pytest tests/unit/test\_structural\_chunker.py -k test\_document\_with\_no\_headings -v` locally. It failed with `assert 0 >= 1` / `where 0 = len(\[])`, confirming `StructuralChunker.chunk()` returns an empty list for a headingless plain-text document instead of at least one chunk.
+
+
+
+\*\*PLAN.md link:\*\* \[fill in after pushing]
+
+
+
+\*\*Walkthrough video (recommended):\*\* \[skip, or add later — not graded]
+
+
+
+\*\*Blockers or open questions:\*\*
+
+Confirming semantic\_chunker.py's token-based sub-splitting handles very large headingless documents sensibly.
+
