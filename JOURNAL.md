@@ -56,3 +56,16 @@ Open the pull request against ascherj/pathreview, write the PR description (noti
 
 **Blockers:**
 make test-unit shows 52 pre-existing failures across ~15 unrelated test files (bias detector, PII scrubber, faithfulness checker, tech detector, skill extractor, etc.) -- none touch the files I changed, and my two test files pass 100%. Documenting these as pre-existing rather than fixing them, per course guidance.
+
+
+
+### Week 9 Check-in 2
+
+- **PR link:** https://github.com/ascherj/pathreview/pull/444
+- **Branch:** fix/149-structural-chunker-no-headings
+- **What was built:** StructuralChunker.chunk() now falls back to SemanticChunker when no headings are found, instead of silently returning an empty list. Also added missing type annotations to structural_chunker.py and semantic_chunker.py (required to pass pre-commit's mypy hook, no behavior change).
+- **Tests added/updated:** test_document_with_no_headings (previously failing) now passes. Full suite: 15/15 in test_structural_chunker.py, 16/16 in test_semantic_chunker.py.
+- **Self-review:**
+  - [x] make check passes on changed files (ruff, black, mypy all clean)
+  - [x] make test-unit passes for changed files (52 pre-existing failures elsewhere, documented, unrelated to this change)
+- **Draft PR feedback received:** [fill in once someone responds on Slack]
