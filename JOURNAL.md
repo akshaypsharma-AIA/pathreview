@@ -82,3 +82,61 @@ make test-unit shows 52 pre-existing failures across ~15 unrelated test files (b
   needed for the fix. Confident in correctness pending maintainer approval.
 - **Branch:** fix/149-structural-chunker-no-headings
 - **PR:** https://github.com/ascherj/pathreview/pull/444
+
+
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No — still awaiting review (not a feature this term per course note)
+
+**Summary of feedback:**
+No feedback received. Also requested review proactively via Slack (2x)
+and in a PR comment, before learning reviewer feedback isn't enabled
+for Summer 2026 — good practice to keep regardless.
+
+**How you responded:**
+N/A — no feedback to respond to.
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+Getting the local dev environment running on Windows took longer than
+the actual bug fix — Docker Desktop needed WSL2, `make` wasn't
+available out of the box, and pasting multi-line commands into Git
+Bash silently corrupted them (bracketed paste mode), which cost real
+time before I switched to editing files directly. The other surprise:
+pre-commit hooks check the whole file (and, for mypy, files it
+imports) — not just my diff — so a 3-line fix got blocked by
+pre-existing type-annotation gaps in two files I hadn't touched the
+logic of.
+
+**What did you learn about working in a large codebase?**
+That "don't make it worse" is the actual bar, not "leave everything
+clean." This repo had ~183 pre-existing lint errors and 52 failing
+tests scattered across other modules, and the right move was to
+verify none of them were in my changed files and move on — not to
+fix them. I also got a much clearer mental model of forks: issues and
+PRs live on the upstream repo, not the fork, which is why I was
+commenting on ascherj's thread instead of my own.
+
+**How did AI tools help — and where did they fall short?**
+Most useful for diagnosing the root cause quickly and explaining
+git/tooling concepts I was rusty on, without derailing the fix
+itself. Less useful for judgment calls specific to this codebase —
+like which pre-existing failures were safe to ignore — where I had
+to verify things myself rather than trust it outright.
+
+**What would you do differently if you started over?**
+Set up the dev environment and run a scoped lint/type-check on my
+target file in week 7, before writing any fix — that would've
+surfaced the pre-existing annotation gaps early instead of mid-commit
+under deadline pressure.
+
+**What are you most proud of from this module?**
+Diagnosing and fixing a real silent-data-loss bug end to end — under
+a genuine time crunch — while actually understanding every step
+instead of just executing commands I didn't follow.
