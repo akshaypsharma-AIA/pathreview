@@ -69,3 +69,16 @@ make test-unit shows 52 pre-existing failures across ~15 unrelated test files (b
   - [x] make check passes on changed files (ruff, black, mypy all clean)
   - [x] make test-unit passes for changed files (52 pre-existing failures elsewhere, documented, unrelated to this change)
 - **Draft PR feedback received:** [fill in once someone responds on Slack]
+
+
+
+### Week 9 Closing Note
+
+- **PR status:** Marked "Ready for review" on [date]. Requested review via
+  Slack (2x) and CodePath support email; no reviewer response received by
+  the extended deadline.
+- **Verification in lieu of peer review:** Full test suite passing for
+  changed files, ruff/black/mypy clean, changes scoped to the two files
+  needed for the fix. Confident in correctness pending maintainer approval.
+- **Branch:** fix/149-structural-chunker-no-headings
+- **PR:** https://github.com/ascherj/pathreview/pull/444
